@@ -1,0 +1,106 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обо мне</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #2c3e50;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: '👤';
+            display: block;
+            margin-bottom: 10px;
+            font-size: 2.4rem;
+        }
+
+        p {
+            width: 100%;
+            margin: 12px 0;
+            padding: 8px 0;
+            font-size: 1.05rem;
+            color: #34495e;
+            border-bottom: 1px dashed #d1d8e0;
+        }
+
+        strong {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 12px 28px;
+            background-color: #007bff; 
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        a:active {
+            transform: translateY(0);
+        }
+
+        /* Адаптив */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            p {
+                font-size: 1rem;
+                padding: 6px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Обо мне</h1>
+    <p><strong>Факультет:</strong> ФКН</p>
+    <p><strong>Страна:</strong> Россия</p>
+    <p><strong>Город:</strong> Воронеж</p>
+    <p><strong>Направление:</strong> Прикладная информатика в экономике</p>
+    <p><strong>Курс:</strong> 1</p>
+    <p><strong>Дата рождения:</strong> 24.04.2007</p>
+    <p><strong>Email:</strong> denis.britchenco@gmail.com</p>
+
+    <br>
+    <a href="index.html">Вернуться на главную</a>
+</body>
+</html>
