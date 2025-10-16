@@ -1,0 +1,96 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бритченко Денис Сергеевич</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #007bff;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        img {
+            width: min(450px, 90vw);
+            height: auto;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 28px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        a:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            img {
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Бритченко Денис Сергеевич</h1>
+    <img src="1759772628.png" alt="Моё фото">
+    <br>
+    <a href="about.html">Обо мне</a>
+</body>
+</html>
