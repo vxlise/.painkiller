@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обо мне</title>
     <style>
@@ -54,7 +57,7 @@
             display: inline-block;
             margin-top: 24px;
             padding: 12px 28px;
-            background-color: #007bff; 
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 30px;
@@ -73,7 +76,76 @@
             transform: translateY(0);
         }
 
-        /* Адаптив */
+        .contact-form {
+            width: 100%;
+            margin-top: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 20px 15px;
@@ -86,6 +158,10 @@
             p {
                 font-size: 1rem;
                 padding: 6px 0;
+            }
+
+            .contact-form {
+                padding: 20px;
             }
         }
     </style>
@@ -100,7 +176,75 @@
     <p><strong>Дата рождения:</strong> 24.04.2007</p>
     <p><strong>Email:</strong> denis.britchenco@gmail.com</p>
 
-    <br>
+    <div class="contact-form">
+        <h2>Связаться со мной</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error" id="nameError">Пожалуйста, введите имя</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="surname">Фамилия:</label>
+                <input type="text" id="surname" name="surname" required>
+                <div class="error" id="surnameError">Пожалуйста, введите фамилию</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="emailError">Пожалуйста, введите корректный email</div>
+            </div>
+            
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+
     <a href="index.html">Вернуться на главную</a>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Валидация имени
+            const name = document.getElementById('name').value.trim();
+            const nameError = document.getElementById('nameError');
+            if (name === '') {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+            
+            // Валидация фамилии
+            const surname = document.getElementById('surname').value.trim();
+            const surnameError = document.getElementById('surnameError');
+            if (surname === '') {
+                surnameError.style.display = 'block';
+                isValid = false;
+            } else {
+                surnameError.style.display = 'none';
+            }
+            
+            // Валидация email
+            const email = document.getElementById('email').value.trim();
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            if (isValid) {
+                alert('Форма успешно отправлена!');
+                this.reset();
+            }
+        });
+    </script>
 </body>
 </html>
