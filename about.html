@@ -144,6 +144,71 @@
             cursor: not-allowed;
         }
 
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .modal h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .modal-content {
+            text-align: left;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+
+        .modal-data-item {
+            margin-bottom: 10px;
+            padding: 5px 0;
+        }
+
+        .modal-data-item strong {
+            color: #2c3e50;
+            display: inline-block;
+            width: 100px;
+        }
+
+        .modal-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+        }
+
+        .modal-button:hover {
+            background-color: #0056b3;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 20px 15px;
@@ -160,6 +225,14 @@
 
             .contact-form {
                 padding: 20px;
+            }
+            
+            .modal {
+                padding: 20px;
+            }
+            
+            .modal-data-item strong {
+                width: 80px;
             }
         }
     </style>
@@ -201,13 +274,31 @@
 
     <a href="index.html">Вернуться на главную</a>
 
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <h3>Форма успешно отправлена!</h3>
+            <div class="modal-content">
+                <div class="modal-data-item">
+                    <strong>Имя:</strong> <span id="modalName"></span>
+                </div>
+                <div class="modal-data-item">
+                    <strong>Фамилия:</strong> <span id="modalSurname"></span>
+                </div>
+                <div class="modal-data-item">
+                    <strong>Email:</strong> <span id="modalEmail"></span>
+                </div>
+            </div>
+            <p>Спасибо за ваше сообщение. Мы свяжемся с вами в ближайшее время.</p>
+            <button class="modal-button" id="modalOkButton">OK</button>
+        </div>
+    </div>
+
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             let isValid = true;
             
-            // Валидация имени
             const name = document.getElementById('name').value.trim();
             const nameError = document.getElementById('nameError');
             if (name === '') {
@@ -217,7 +308,6 @@
                 nameError.style.display = 'none';
             }
             
-            // Валидация фамилии
             const surname = document.getElementById('surname').value.trim();
             const surnameError = document.getElementById('surnameError');
             if (surname === '') {
@@ -227,7 +317,6 @@
                 surnameError.style.display = 'none';
             }
             
-            // Валидация email
             const email = document.getElementById('email').value.trim();
             const emailError = document.getElementById('emailError');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -239,8 +328,22 @@
             }
             
             if (isValid) {
-                alert('Форма успешно отправлена!');
+                document.getElementById('modalName').textContent = name;
+                document.getElementById('modalSurname').textContent = surname;
+                document.getElementById('modalEmail').textContent = email;
+                
+                document.getElementById('successModal').style.display = 'flex';
                 this.reset();
+            }
+        });
+
+        document.getElementById('modalOkButton').addEventListener('click', function() {
+            document.getElementById('successModal').style.display = 'none';
+        });
+
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
             }
         });
     </script>
